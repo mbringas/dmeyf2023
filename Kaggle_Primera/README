@@ -1,0 +1,4 @@
+Se envian 6800 casos positivos obtenidos a partir del uso del modelo elegido.
+Dicho modelo tiene hiperparámetros elegidos mediante optimización bayesiana con
+5 fold validacion y 5 repeticiones de montecarlo (con las 5 semillas indicadas)
+y un maximo de 200 pasos de búsqueda.
