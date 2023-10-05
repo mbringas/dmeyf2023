@@ -20,8 +20,9 @@ PARAM$experimento <- "kill_zero_vars"
 # Aqui comienza el programa
 
 # copio si hace falta el dataset
+setwd("~/buckets/harulagatita/")
 
-setwd("./")
+#setwd("./")
 
 # cargo el dataset
 dataset <- fread(PARAM$dataset) # donde entreno

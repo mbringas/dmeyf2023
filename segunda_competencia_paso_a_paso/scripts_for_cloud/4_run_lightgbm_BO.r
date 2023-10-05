@@ -35,7 +35,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "OPTIM_bayesiana"
+PARAM$experimento <- "OPTIM_bayesiana_1"
 
 PARAM$input$dataset <- "competencia_02_historical_features.csv.gz"
 
@@ -219,8 +219,8 @@ EstimarGanancia_lightgbm <- function(x) {
 # Aqui empieza el programa
 
 # Aqui se debe poner la carpeta de la computadora local
-#setwd("~/buckets/b1/") # Establezco el Working Directory
-setwd("./")
+setwd("~/buckets/harulagatita/") # Establezco el Working Directory
+#setwd("./")
 # cargo el dataset donde voy a entrenar el modelo
 dataset <- fread(PARAM$input$dataset)
 
