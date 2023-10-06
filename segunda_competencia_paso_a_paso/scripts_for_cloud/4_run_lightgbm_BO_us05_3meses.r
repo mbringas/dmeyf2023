@@ -35,7 +35,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "OPTIM_bayesiana_1"
+PARAM$experimento <- "OPTIM_bayesiana_4"
 
 PARAM$input$dataset <- "datasets/competencia_02_historical_features.csv.gz"
 

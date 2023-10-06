@@ -35,7 +35,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "OPTIM_bayesiana_1"
+PARAM$experimento <- "OPTIM_bayesiana_2"
 
 PARAM$input$dataset <- "datasets/competencia_02_historical_features.csv.gz"
 
@@ -44,7 +44,7 @@ PARAM$input$dataset <- "datasets/competencia_02_historical_features.csv.gz"
 PARAM$input$training <- c(202105)
 
 # un undersampling de 0.1  toma solo el 10% de los CONTINUA
-PARAM$trainingstrategy$undersampling <- 0.30
+PARAM$trainingstrategy$undersampling <- 0.50
 PARAM$trainingstrategy$semilla_azar <- 369821 # Aqui poner su  primer  semilla
 
 PARAM$hyperparametertuning$iteraciones <- 100
