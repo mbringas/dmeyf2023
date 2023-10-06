@@ -1,0 +1,13 @@
+#Entrada 1 
+4_run_lightgbm_BO.r
+Undersampling 0.3
+EXP OPTIM_bayesiana_1
+
+#Entrada 2
+#Entrada 3
+#Entrada 4
+#Entrada 5
+#Entrada 6
+#Entrada 7
+
+
