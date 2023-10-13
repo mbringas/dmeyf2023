@@ -40,14 +40,11 @@ columns=columns+["q_mrentabilidad","q_mrentabilidad_annual","q_mcomisiones","q_m
 
 nuevos_features=",".join(intact)
 for column in columns:
-    nuevos_features += f"""\n, LAG({column}) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS prev_{column}"""
+    nuevos_features += f"""\n, LAG({column}) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS prev_{column}
 
-a="""			   \n, {column} - LAG({column}) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference_{column}  
-                           \n, regr_slope({column}, cliente_antiguedad) over ventana_6 as ctrx_{column}_slope_6
+			   \n, {column} - LAG({column}) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference_{column}  
 			   \n, LAG({column},3) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS prev3_{column}
-                           \n, LAG({column},6) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS prev6_{column}
                            \n, {column} - LAG({column},3) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference3_{column}  
-                           \n, {column} - LAG({column},6) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference6_{column}  
 			"""
 
 
@@ -59,7 +56,7 @@ print("ACA FETCHEA")
 result_df = result.fetchdf()
 print("ARRANCA A ESCRIBIR")
 # Specify the path for the new CSV file
-output_csv = '~/buckets/b1/datasets/competencia_02_historical_features.csv.gz'
+output_csv = '~/buckets/b1/datasets/competencia_02_historical_features2.csv.gz'
 
 # Save the DataFrame to a new CSV file
 result_df.to_csv(output_csv, index=False)
