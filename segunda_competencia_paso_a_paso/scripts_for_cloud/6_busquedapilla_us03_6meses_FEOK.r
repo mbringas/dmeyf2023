@@ -274,8 +274,6 @@ setwd("~/buckets/b1/") # Establezco el Working Directory
 
 # cargo el dataset donde voy a entrenar el modelo
 dataset <- fread(PARAM$input$dataset)
-cols_to_exclude <- grep("_2$", names(dataset))
-dataset <- dataset[, -cols_to_exclude]
 
 
 # creo la carpeta donde va el experimento
