@@ -317,7 +317,7 @@ if (file.exists(klog)) {
 
 
 # paso la clase a binaria que tome valores {0,1}  enteros
-dataset[, clase01 := ifelse(clase_ternaria == "CONTINUA", 0L, 1L)]
+dataset[, clase01 := ifelse(clase_ternaria %in% c("CONTINUA","BAJA+3","BAJA+4","BAJA+5","BAJA+6"), 0L, 1L)]
 
 
 # los campos que se van a utilizar
