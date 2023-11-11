@@ -162,7 +162,7 @@ tb_entrega[, prob := prediccion]
 
 # grabo las probabilidad del modelo
 fwrite(tb_entrega,
-  file = paste0("prediccion_",num,"_.txt",
+  file = paste0("prediccion_",num,"_.txt"),
   sep = "\t"
 )
 
