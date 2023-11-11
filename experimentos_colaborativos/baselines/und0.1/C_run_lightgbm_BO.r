@@ -32,7 +32,7 @@ options(error = function() {
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
 
-PARAM$experimento <- "ExpColab_und0.5"
+PARAM$experimento <- "ExpColab_und0.1"
 
 PARAM$input$dataset <- "./datasets/colaborativos_features.csv.gz"
 
@@ -43,7 +43,7 @@ PARAM$input$validation <- c(202105)
 PARAM$input$training <- c(202011, 202012, 202101, 202102, 202103,202104)
 
 # un undersampling de 0.1  toma solo el 10% de los CONTINUA
-PARAM$trainingstrategy$undersampling <- 0.5
+PARAM$trainingstrategy$undersampling <- 0.1
 PARAM$trainingstrategy$semilla_azar <- 102191 # Aqui poner su  primer  semilla
 
 PARAM$hyperparametertuning$POS_ganancia <- 273000
