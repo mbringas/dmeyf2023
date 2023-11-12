@@ -316,7 +316,9 @@ if (file.exists(klog)) {
 
 to_delete <- sum(dataset$clase_ternaria=="BAJA+3")
 cat("Numero de registros intermedios volados: ",to_delete,"\n")
+cat(length(dataset)) 
 dataset <- dataset[dataset$clase_ternaria != "BAJA+3"]
+cat(length(dataset))
 # paso la clase a binaria que tome valores {0,1}  enteros
 dataset[, clase01 := ifelse(clase_ternaria %in% c("CONTINUA","BAJA+3","BAJA+4","BAJA+5","BAJA+6"), 0L, 1L)]
 
