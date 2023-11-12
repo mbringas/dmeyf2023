@@ -25,11 +25,11 @@ PARAM$input$future <- c(202107) # meses donde se aplica el modelo
 PARAM$finalmodel$semilla <- 102191
 
 # hiperparametros intencionalmente NO optimos
-PARAM$finalmodel$optim$num_iterations <- 
-PARAM$finalmodel$optim$learning_rate <- 
-PARAM$finalmodel$optim$feature_fraction <- 
-PARAM$finalmodel$optim$min_data_in_leaf <-
-PARAM$finalmodel$optim$num_leaves <- 
+PARAM$finalmodel$optim$num_iterations <-  
+PARAM$finalmodel$optim$learning_rate <- 0.12296
+PARAM$finalmodel$optim$feature_fraction <- 0.5797 
+PARAM$finalmodel$optim$min_data_in_leaf <- 8895
+PARAM$finalmodel$optim$num_leaves <- 101
 
 
 # Hiperparametros FIJOS de  lightgbm
