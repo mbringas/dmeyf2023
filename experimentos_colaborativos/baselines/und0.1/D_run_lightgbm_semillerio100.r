@@ -61,7 +61,6 @@ PARAM$finalmodel$lgb_basicos <- list(
 
   extra_trees = TRUE, # Magic Sauce
 
-  seed = PARAM$finalmodel$semilla
 )
 
 
