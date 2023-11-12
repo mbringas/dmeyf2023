@@ -14,7 +14,7 @@ require("lightgbm")
 # defino los parametros de la corrida, en una lista, la variable global  PARAM
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
-PARAM$experimento <- "baseline_undersampling01_sinbm3_100seeds"
+PARAM$experimento <- "baseline_undersampling01_sinbm43_100seeds"
 
 PARAM$input$dataset <- "./datasets/colaborativos_features.csv.gz"
 
@@ -89,10 +89,11 @@ dataset <- fread(PARAM$input$dataset, stringsAsFactors = TRUE)
 
 # BORRAR LOS BAJA
 
-to_delete <- sum(dataset$clase_ternaria=="BAJA+3")
+to_delete <- sum(dataset$clase_ternaria=="BAJA+3")+sum(dataset$clase_ternaria=="BAJA+4")
 cat("Numero de registros intermedios volados: ",to_delete,"\n")
 cat(length(dataset))
 dataset <- dataset[dataset$clase_ternaria != "BAJA+3"]
+dataset <- dataset[dataset$clase_ternaria != "BAJA+4"]
 cat(length(dataset))
 #--------------------------------------
 
