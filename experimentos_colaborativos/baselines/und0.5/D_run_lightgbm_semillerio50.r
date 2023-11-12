@@ -59,7 +59,7 @@ PARAM$finalmodel$lgb_basicos <- list(
   max_drop = 50, # <=0 means no limit
   skip_drop = 0.5, # 0.0 <= skip_drop <= 1.0
 
-  extra_trees = TRUE, # Magic Sauce
+  extra_trees = TRUE # Magic Sauce
 
 #  seed = PARAM$finalmodel$semilla
 )
@@ -117,7 +117,7 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
 
-for (num in 1:100){
+for (num in 43:50){
 # dejo los datos en el formato que necesita LightGBM
 dtrain <- lgb.Dataset(
   data = data.matrix(dataset[train == 1L, campos_buenos, with = FALSE]),
