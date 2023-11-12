@@ -61,7 +61,7 @@ PARAM$finalmodel$lgb_basicos <- list(
 
   extra_trees = TRUE, # Magic Sauce
 
-  seed = PARAM$finalmodel$semilla
+#  seed = PARAM$finalmodel$semilla
 )
 
 
@@ -186,5 +186,6 @@ for (envios in cortes) {
     sep = ","
   )
 }
+cat("FIN ITERACION ",num,"!")
 }
 cat("\n\nLa generacion de los archivos para Kaggle ha terminado\n")
