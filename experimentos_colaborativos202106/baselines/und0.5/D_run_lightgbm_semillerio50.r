@@ -20,7 +20,7 @@ PARAM$input$dataset <- "./datasets/colaborativos_features.csv.gz"
 
 # meses donde se entrena el modelo
 PARAM$input$training <- c(202012, 202101, 202102, 202103, 202104, 202105)
-PARAM$input$future <- c(202106) # meses donde se aplica el modelo
+PARAM$input$future <- c(202107) # meses donde se aplica el modelo
 
 PARAM$finalmodel$semilla <- 102191
 
