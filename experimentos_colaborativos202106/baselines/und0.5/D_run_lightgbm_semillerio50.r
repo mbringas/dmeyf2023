@@ -117,7 +117,7 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
 
-for (num in 1:10){
+for (num in 1:20){
 # dejo los datos en el formato que necesita LightGBM
 dtrain <- lgb.Dataset(
   data = data.matrix(dataset[train == 1L, campos_buenos, with = FALSE]),
@@ -186,7 +186,7 @@ for (envios in cortes) {
     sep = ","
   )
 }
-PARAM$finalmodel$seed=PARAM$finalmodel$seed+i
-cat("FIN ITERACION ",num,"! con seed ",PARAM$finalmodel$seed,"...\n")
+PARAM$finalmodel$lgb_basicos$seed=PARAM$finalmodel$lgb_basicos$seed+i
+cat("FIN ITERACION ",num,"! con seed ",PARAM$finalmodel$lgb_basicos$seed,"...\n")
 }
 cat("\n\nLa generacion de los archivos para Kaggle ha terminado\n")
