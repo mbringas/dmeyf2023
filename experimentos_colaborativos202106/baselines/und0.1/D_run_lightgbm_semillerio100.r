@@ -20,7 +20,7 @@ PARAM$input$dataset <- "./datasets/colaborativos_features.csv.gz"
 
 # meses donde se entrena el modelo
 PARAM$input$training <- c(202012, 202101, 202102, 202103, 202104, 202105)
-PARAM$input$future <- c(202106) # meses donde se aplica el modelo
+PARAM$input$future <- c(202107) # meses donde se aplica el modelo
 
 PARAM$finalmodel$semilla <- 102191
 
@@ -60,7 +60,7 @@ PARAM$finalmodel$lgb_basicos <- list(
   skip_drop = 0.5, # 0.0 <= skip_drop <= 1.0
 
   extra_trees = TRUE, # Magic Sauce
-
+  seed = PARAM$finalmodel$semilla
 )
 
 
@@ -116,7 +116,7 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
 
-for (num in 1:10){
+for (num in 1:20){
 # dejo los datos en el formato que necesita LightGBM
 dtrain <- lgb.Dataset(
   data = data.matrix(dataset[train == 1L, campos_buenos, with = FALSE]),
@@ -185,5 +185,6 @@ for (envios in cortes) {
     sep = ","
   )
 }
+PARAM$finalmodel$lgb_basicos$semilla=PARAM$finalmodel$lgb_basicos$semilla+num
 }
 cat("\n\nLa generacion de los archivos para Kaggle ha terminado\n")
