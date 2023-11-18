@@ -59,9 +59,9 @@ PARAM$finalmodel$lgb_basicos <- list(
   max_drop = 50, # <=0 means no limit
   skip_drop = 0.5, # 0.0 <= skip_drop <= 1.0
 
-  extra_trees = TRUE # Magic Sauce
+  extra_trees = TRUE, # Magic Sauce
 
-#  seed = PARAM$finalmodel$semilla
+  seed = PARAM$finalmodel$semilla
 )
 
 
