@@ -45,12 +45,21 @@ for column in columns:
 			   \n, {column} - LAG({column}) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference_{column}  
 			   \n, LAG({column},3) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS prev3_{column}
                            \n, {column} - LAG({column},3) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference3_{column}  
-			"""
+			   \n, LAG({column},6) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS prev6_{column}
+                           \n, {column} - LAG({column},6) OVER (PARTITION BY numero_de_cliente ORDER BY foto_mes) AS difference6_{column}    
+                           \n, MIN({column}) OVER semestre AS min_{column}
+                           \n, MAX({column}) OVER semestre AS max_{column}  
+                           \n, AVG({column}) OVER semestre AS avg_{column}  
+                           \n, ({column})/(avg_{column}) AS norm_{column}  
+                           \n, ({column}-prev_{column})/(avg_{column}) AS std_{column}  
+                           \n, ({column}-prev3_{column})/(avg_{column}) AS std_3_{column}  
+                           \n, ({column}-prev6_{column})/(avg_{column}) AS std_6_{column}
+                        """
 
 
 result=con.execute(f"""SELECT * """+nuevos_features+""" 
     		FROM bank_data
-                window ventana_6 as (partition by numero_de_cliente order by foto_mes rows between 6 preceding and current row)
+                window semestre as (partition by numero_de_cliente order by foto_mes rows between 5 preceding and current row)
 """)
 print("ACA FETCHEA")
 result_df = result.fetchdf()
