@@ -36,19 +36,19 @@ PARAM$input$dataset <- "./datasets/competencia_03_historical_features.csv.gz"
 
 # los meses en los que vamos a entrenar
 #  mucha magia emerger de esta eleccion
-PARAM$input$testing <- c(202107)
-PARAM$input$validation <- c(202106)
+PARAM$input$testing <- c(202108)
+PARAM$input$validation <- c(202107)
 PARAM$input$training <- c(202106,202105,202104,202103, 202102, 202101, 202012, 202011, 202010)
 
 # Sin undersampling
 PARAM$trainingstrategy$undersampling <- 0.3
-PARAM$trainingstrategy$semilla_azar <- 119831
+PARAM$trainingstrategy$semilla_azar <- 369821
 
 PARAM$hyperparametertuning$POS_ganancia <- 273000
 PARAM$hyperparametertuning$NEG_ganancia <- -7000
 
 # Aqui poner su segunda semilla
-PARAM$lgb_semilla <- 119839
+PARAM$lgb_semilla <- 369827
 #------------------------------------------------------------------------------
 
 # Hiperparametros FIJOS de  lightgbm
