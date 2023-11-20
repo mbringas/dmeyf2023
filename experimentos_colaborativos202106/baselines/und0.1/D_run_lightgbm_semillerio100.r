@@ -185,6 +185,7 @@ for (envios in cortes) {
     sep = ","
   )
 }
-PARAM$finalmodel$lgb_basicos$semilla=PARAM$finalmodel$lgb_basicos$semilla+num
+PARAM$finalmodel$lgb_basicos$seed=PARAM$finalmodel$lgb_basicos$seed+num
+cat("La semilla es ",PARAM$finalmodel$lgb_basicos$seed)
 }
 cat("\n\nLa generacion de los archivos para Kaggle ha terminado\n")
