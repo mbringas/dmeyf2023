@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 base="/home/maubringas/buckets/b1/exp/"
-experiments=["baseline_undersampling03_100seeds","baseline_undersampling05_100seeds","baseline_undersampling01_100seeds","baseline_undersampling03_100seeds","baseline_undersampling03_100seeds"]
+experiments=["baseline_07_undersampling03_100seeds","baseline_07_undersampling05_100seeds","baseline_07_undersampling01_100seeds","baseline_07_undersampling01_sinbm3_100seeds","baseline_07_undersampling01_sinbm43_100seeds"]
 gains=[9000]
 test=pd.read_csv("/home/maubringas/buckets/b1/datasets/data_test.csv",header=None,names=["nrocli","resul_test"])
 test.sort_values(by="nrocli",inplace=True)
