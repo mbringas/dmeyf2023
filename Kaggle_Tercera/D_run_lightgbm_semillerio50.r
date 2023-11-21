@@ -14,13 +14,13 @@ require("lightgbm")
 # defino los parametros de la corrida, en una lista, la variable global  PARAM
 #  muy pronto esto se leera desde un archivo formato .yaml
 PARAM <- list()
-PARAM$experimento <- "baseline_07_undersampling01_sinbm543_100seeds"
+PARAM$experimento <- "Kaggle_terera_modelo_1"
 
 PARAM$input$dataset <- "./datasets/colaborativos_features.csv.gz"
 
 # meses donde se entrena el modelo
-PARAM$input$training <- c(202012, 202101, 202102, 202103, 202104, 202105)
-PARAM$input$future <- c(202107) # meses donde se aplica el modelo
+PARAM$input$training <- c(202012, 202101, 202102, 202103, 202104, 202105,202106,202107,202108)
+PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
 PARAM$finalmodel$semilla <- 102191
 
@@ -125,13 +125,13 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
 
-for (num in 1:10){
+for (num in c(7057, 7351, 8269, 9241, 10267, 11719, 12097, 13267, 13669, 16651, 19441, 19927, 22447, 23497, 24571, 25117, 26227, 27361, 33391, 35317, 2029, 3469, 3889, 4801, 10093, 12289, 13873, 18253, 20173, 21169, 22189, 28813, 37633, 43201, 47629, 60493, 63949, 65713, 69313, 73009, 76801, 84673)){
 # dejo los datos en el formato que necesita LightGBM
 dtrain <- lgb.Dataset(
   data = data.matrix(dataset[train == 1L, campos_buenos, with = FALSE]),
   label = dataset[train == 1L, clase01]
 )
-
+PARAM$finalmodel$lgb_basicos$seed=num
 
 # genero el modelo
 param_completo <- c(PARAM$finalmodel$lgb_basicos,
@@ -194,7 +194,6 @@ for (envios in cortes) {
     sep = ","
   )
 }
-PARAM$finalmodel$lgb_basicos$seed=PARAM$finalmodel$lgb_basicos$seed+num
 cat("La semilla ahora es ",PARAM$finalmodel$lgb_basicos$seed,"...")
 cat("FIN ITERACION ",num,"!\n")
 }
