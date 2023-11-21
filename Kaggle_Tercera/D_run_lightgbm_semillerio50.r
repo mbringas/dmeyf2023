@@ -16,7 +16,7 @@ require("lightgbm")
 PARAM <- list()
 PARAM$experimento <- "Kaggle_terera_modelo_1"
 
-PARAM$input$dataset <- "./datasets/colaborativos_features.csv.gz"
+PARAM$input$dataset <- "./datasets/competencia_03_historical_features.csv.gz"
 
 # meses donde se entrena el modelo
 PARAM$input$training <- c(202012, 202101, 202102, 202103, 202104, 202105,202106,202107,202108)
@@ -25,15 +25,22 @@ PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 PARAM$finalmodel$semilla <- 102191
 
 # hiperparametros intencionalmente NO optimos
-PARAM$finalmodel$optim$num_iterations <- 205 
-PARAM$finalmodel$optim$learning_rate <- 0.12296
-PARAM$finalmodel$optim$feature_fraction <- 0.5797 
-PARAM$finalmodel$optim$min_data_in_leaf <- 8895
-PARAM$finalmodel$optim$num_leaves <- 101
+PARAM$finalmodel$optim$num_iterations <- 
+PARAM$finalmodel$optim$learning_rate <- 
+PARAM$finalmodel$optim$feature_fraction <-  
+PARAM$finalmodel$optim$min_data_in_leaf <- 
+PARAM$finalmodel$optim$num_leaves <- 
+
+PARAM$finalmodel$optim$feature_fraction_bynode <- 
+PARAM$finalmodel$optim$max_depth <- 
+PARAM$finalmodel$optim$bagging_fraction <- 
+PARAM$finalmodel$optim$pos_bagging_fraction <- 
+PARAM$finalmodel$optim$neg_bagging_fraction <-
+PARAM$finalmodel$optim$bagging_freq <-
 
 
 # Hiperparametros FIJOS de  lightgbm
-PARAM$finalmodel$lgb_basicos <- list(
+PARAM$lgb_basicos <- list(
   boosting = "gbdt", # puede ir  dart  , ni pruebe random_forest
   objective = "binary",
   metric = "custom",
@@ -42,16 +49,14 @@ PARAM$finalmodel$lgb_basicos <- list(
   feature_pre_filter = FALSE,
   force_row_wise = TRUE, # para reducir warnings
   verbosity = -100,
-  max_depth = -1L, # -1 significa no limitar,  por ahora lo dejo fijo
+
   min_gain_to_split = 0.0, # min_gain_to_split >= 0.0
   min_sum_hessian_in_leaf = 0.001, #  min_sum_hessian_in_leaf >= 0.0
   lambda_l1 = 0.0, # lambda_l1 >= 0.0
   lambda_l2 = 0.0, # lambda_l2 >= 0.0
   max_bin = 31L, # lo debo dejar fijo, no participa de la BO
+  num_iterations = 9999, # un numero muy grande, lo limita early_stopping_rounds
 
-  bagging_fraction = 1.0, # 0.0 < bagging_fraction <= 1.0
-  pos_bagging_fraction = 1.0, # 0.0 < pos_bagging_fraction <= 1.0
-  neg_bagging_fraction = 1.0, # 0.0 < neg_bagging_fraction <= 1.0
   is_unbalance = FALSE, #
   scale_pos_weight = 1.0, # scale_pos_weight > 0.0
 
@@ -63,7 +68,6 @@ PARAM$finalmodel$lgb_basicos <- list(
 
   seed = PARAM$finalmodel$semilla
 )
-
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
