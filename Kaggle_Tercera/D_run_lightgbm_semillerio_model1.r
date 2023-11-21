@@ -128,14 +128,15 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
 # Establezco el Working Directory DEL EXPERIMENTO
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
+my_seeds <- c(7057, 7351, 8269, 9241, 10267, 11719, 12097, 13267, 13669, 16651, 19441, 19927, 22447, 23497, 24571, 25117, 26227, 27361, 33391, 35317, 2029, 3469, 3889, 4801, 10093, 12289, 13873, 18253, 20173, 21169, 22189, 28813, 37633, 43201, 47629, 60493, 63949, 65713, 69313, 73009, 76801, 84673)
 
-for (num in c(7057, 7351, 8269, 9241, 10267, 11719, 12097, 13267, 13669, 16651, 19441, 19927, 22447, 23497, 24571, 25117, 26227, 27361, 33391, 35317, 2029, 3469, 3889, 4801, 10093, 12289, 13873, 18253, 20173, 21169, 22189, 28813, 37633, 43201, 47629, 60493, 63949, 65713, 69313, 73009, 76801, 84673)){
+for (num in 1:length(my_seeds)){
 # dejo los datos en el formato que necesita LightGBM
 dtrain <- lgb.Dataset(
   data = data.matrix(dataset[train == 1L, campos_buenos, with = FALSE]),
   label = dataset[train == 1L, clase01]
 )
-PARAM$finalmodel$lgb_basicos$seed=num
+PARAM$finalmodel$lgb_basicos$seed=my_seeds[num]
 
 # genero el modelo
 param_completo <- c(PARAM$finalmodel$lgb_basicos,
@@ -174,7 +175,7 @@ tb_entrega[, prob := prediccion]
 
 # grabo las probabilidad del modelo
 fwrite(tb_entrega,
-  file = paste0("prediccion_",num,"_.txt"),
+  file = paste0("prediccion_",my_seeds[num],"_.txt"),
   sep = "\t"
 )
 
@@ -194,7 +195,7 @@ for (envios in cortes) {
   tb_entrega[1:envios, Predicted := 1L]
 
   fwrite(tb_entrega[, list(numero_de_cliente, Predicted)],
-    file = paste0(PARAM$experimento, "_",num,"_", envios, ".csv"),
+    file = paste0(PARAM$experimento, "_",my_seeds[num],"_", envios, ".csv"),
     sep = ","
   )
 }
