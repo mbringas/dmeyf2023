@@ -25,8 +25,8 @@ PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 PARAM$finalmodel$semilla <- 102191
 
 # hiperparametros intencionalmente NO optimos
-PARAM$finalmodel$optim$num_iterations <- 
-PARAM$finalmodel$optim$learning_rate <- 
+PARAM$finalmodel$optim$num_iterations <-1575 
+PARAM$finalmodel$optim$learning_rate <- 0.0427
 PARAM$finalmodel$optim$feature_fraction <- 0.83255
 PARAM$finalmodel$optim$min_data_in_leaf <- 19920
 PARAM$finalmodel$optim$num_leaves <- 377
